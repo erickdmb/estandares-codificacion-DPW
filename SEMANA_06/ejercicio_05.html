@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Segura</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <div id="resultado"></div>
+    <script>
+        // Función reutilizable (DRY)
+        function validarNumero(valor) {
+            let numero = parseFloat(valor);
+            return isNaN(numero) ? null : numero;
+        }
+        
+        // Función reutilizable (DRY)
+        function realizarOperacion(num1, num2, operacion) {
+            switch(operacion) {
+                case "sumar": return num1 + num2;
+                case "restar": return num1 - num2;
+                case "multiplicar": return num1 * num2;
+                case "dividir": return num2 !== 0 ? num1 / num2 : "Error: División por cero";
+                default: return "Operación no válida";
+            }
+        }
+        
+        // Función principal (KISS - simple)
+        function ejecutarCalculadora() {
+            let num1 = validarNumero(prompt("Ingresa el primer número:"));
+            let num2 = validarNumero(prompt("Ingresa el segundo número:"));
+            
+            // Validar entradas (OWASP)
+            if (num1 === null || num2 === null) {
+                document.getElementById("resultado").textContent = "Error: Debes ingresar números válidos";
+                return;
+            }
+            
+            let operacion = prompt("¿Qué operación? (sumar, restar, multiplicar, dividir):");
+            let resultado = realizarOperacion(num1, num2, operacion.toLowerCase());
+            
+            // Usar textContent (seguro contra XSS)
+            document.getElementById("resultado").textContent = "Resultado: " + resultado;
+        }
+        
+        ejecutarCalculadora(); // YAGNI: solo ejecuta lo necesario
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 function calc(p, a) {
     let r = p * a;
-    let iva = r * 0.18;
-    let t = r + iva;
+    let igv = r * 0.18;
+    let t = r + igv;
     return t;
 }
 
