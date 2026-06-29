@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>guia_practica_11.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="practica-guiada-de-la-semana-11">PRACTICA GUIADA DE LA SEMANA 11</h1>
+<h2 id="proposito">Proposito</h2>
+<p>El estudiante aplicará principios de modularización (dividir el código en módulos) y reutilización (usar el mismo código en múltiples lugares) para crear aplicaciones más mantenibles y escalables.</p>
+<h2 id="parte-práctica">Parte Práctica</h2>
+<h3 id="paso-1-crear-la-carpeta-del-proyecto">Paso 1: Crear la carpeta del proyecto</h3>
+<p>Crear una carpeta llamada <code>semana11_tu_nombre</code></p>
+<h3 id="paso-2-crear-subcarpetas">Paso 2: Crear subcarpetas</h3>
+<p>Dentro de <code>semana11_tu_nombre</code>, crea:</p>
+<ul>
+<li>Carpeta <code>css</code></li>
+<li>Carpeta <code>js</code></li>
+<li>Carpeta <code>modules</code></li>
+</ul>
+<h3 id="paso-3-estructura-del-proyecto">Paso 3: Estructura del proyecto</h3>
+<pre class="hljs"><code><div>semana11_tu_nombre/
+   css/
+       estilos.css
+   js/
+       app.js 
+   modules/
+       validaciones.js   
+       calculos.js       
+       formateo.js      
+       storage.js        
+   index.html                
+</div></code></pre>
+<h3 id="paso-4-crear-el-archivo-css">Paso 4: Crear el archivo CSS</h3>
+<p>Archivo: <code>css/estilos.css</code></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">body</span> {
+   <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
+   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;
+   <span class="hljs-attribute">margin</span>: <span class="hljs-number">50px</span> auto;
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+   <span class="hljs-attribute">background</span>: <span class="hljs-number">#f4f4f4</span>;
+}
+
+<span class="hljs-selector-tag">h1</span> {
+   <span class="hljs-attribute">color</span>: <span class="hljs-number">#007bff</span>;
+   <span class="hljs-attribute">text-align</span>: center;
+}
+
+<span class="hljs-selector-tag">h2</span> {
+   <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-tag">label</span> {
+   <span class="hljs-attribute">display</span>: block;
+   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>;
+   <span class="hljs-attribute">font-weight</span>: bold;
+}
+
+<span class="hljs-selector-tag">input</span>, <span class="hljs-selector-tag">select</span>, <span class="hljs-selector-tag">button</span> {
+   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+   <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;
+   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ddd</span>;
+   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+   <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">button</span> {
+   <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;
+   <span class="hljs-attribute">color</span>: white;
+   <span class="hljs-attribute">cursor</span>: pointer;
+}
+
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span> {
+   <span class="hljs-attribute">background</span>: <span class="hljs-number">#0056b3</span>;
+}
+
+<span class="hljs-selector-class">.resultado</span> {
+   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+   <span class="hljs-attribute">background</span>: white;
+   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+   <span class="hljs-attribute">text-align</span>: center;
+   <span class="hljs-attribute">font-weight</span>: bold;
+}
+
+<span class="hljs-selector-class">.historial</span> {
+   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+   <span class="hljs-attribute">background</span>: white;
+   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+   <span class="hljs-attribute">max-height</span>: <span class="hljs-number">200px</span>;
+   <span class="hljs-attribute">overflow-y</span>: auto;
+}
+
+<span class="hljs-selector-class">.historial-item</span> {
+   <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span>;
+   <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ddd</span>;
+   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+}
+
+<span class="hljs-selector-class">.error</span> {
+   <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-selector-class">.exito</span> {
+   <span class="hljs-attribute">color</span>: green;
+}
+</div></code></pre>
+<h3 id="paso-5-crear-el-módulo-de-validaciones">Paso 5: Crear el módulo de validaciones</h3>
+<p>Archivo: <code>modules/validaciones.js</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Módulo de validaciones - Responsabilidad: validar datos de entrada</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">esNumeroValido</span>(<span class="hljs-params">valor</span>) {
+    <span class="hljs-keyword">const</span> numero = <span class="hljs-built_in">parseFloat</span>(valor);
+    <span class="hljs-keyword">return</span> !<span class="hljs-built_in">isNaN</span>(numero);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">validarDivision</span>(<span class="hljs-params">divisor</span>) {
+    <span class="hljs-keyword">if</span> (divisor === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">limpiarErrores</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> resultadoDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;resultado&quot;</span>);
+    <span class="hljs-keyword">if</span> (resultadoDiv) {
+        resultadoDiv.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Esperando operación...&quot;</span>;
+        resultadoDiv.<span class="hljs-property">className</span> = <span class="hljs-string">&quot;resultado&quot;</span>;
+    }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mostrarError</span>(<span class="hljs-params">mensaje</span>) {
+    <span class="hljs-keyword">const</span> resultadoDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;resultado&quot;</span>);
+    <span class="hljs-keyword">if</span> (resultadoDiv) {
+        resultadoDiv.<span class="hljs-property">innerHTML</span> = mensaje;
+        resultadoDiv.<span class="hljs-property">className</span> = <span class="hljs-string">&quot;resultado error&quot;</span>;
+    }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mostrarExito</span>(<span class="hljs-params">mensaje</span>) {
+    <span class="hljs-keyword">const</span> resultadoDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;resultado&quot;</span>);
+    <span class="hljs-keyword">if</span> (resultadoDiv) {
+        resultadoDiv.<span class="hljs-property">innerHTML</span> = mensaje;
+        resultadoDiv.<span class="hljs-property">className</span> = <span class="hljs-string">&quot;resultado exito&quot;</span>;
+    }
+}
+</div></code></pre>
+<h3 id="paso-6-crear-el-módulo-de-cálculos">Paso 6: Crear el módulo de cálculos</h3>
+<p>Archivo: <code>modules/calculos.js</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Módulo de cálculos - Responsabilidad: operaciones matemáticas</span>
+<span class="hljs-comment">// Este módulo está diseñado para ser REUTILIZABLE en cualquier proyecto</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">sumar</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">restar</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a - b;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">multiplicar</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a * b;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">dividir</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">if</span> (b === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;No se puede dividir por cero&quot;</span>);
+    }
+    <span class="hljs-keyword">return</span> a / b;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PI</span> = <span class="hljs-number">3.14159265359</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">areaCirculo</span>(<span class="hljs-params">radio</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">PI</span> * radio * radio;
+}
+
+<span class="hljs-comment">// Función que reutiliza otras funciones del mismo módulo</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">calcularTodo</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">suma</span>: <span class="hljs-title function_">sumar</span>(a, b),
+        <span class="hljs-attr">resta</span>: <span class="hljs-title function_">restar</span>(a, b),
+        <span class="hljs-attr">multiplicacion</span>: <span class="hljs-title function_">multiplicar</span>(a, b),
+        <span class="hljs-attr">division</span>: <span class="hljs-title function_">dividir</span>(a, b)
+    };
+}
+</div></code></pre>
+<h3 id="paso-7-crear-el-módulo-de-formateo">Paso 7: Crear el módulo de formateo</h3>
+<p>Archivo: <code>modules/formateo.js</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Módulo de formateo - Responsabilidad: dar formato a datos</span>
+<span class="hljs-comment">// Este módulo puede reutilizarse en cualquier proyecto que necesite formateo</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">formatearNumero</span>(<span class="hljs-params">numero, decimales = <span class="hljs-number">2</span></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> numero !== <span class="hljs-string">&#x27;number&#x27;</span>) <span class="hljs-keyword">return</span> numero;
+    <span class="hljs-keyword">return</span> numero.<span class="hljs-title function_">toFixed</span>(decimales);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">formatearFecha</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> ahora = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${ahora.getDate()}</span>/<span class="hljs-subst">${ahora.getMonth() + <span class="hljs-number">1</span>}</span>/<span class="hljs-subst">${ahora.getFullYear()}</span> <span class="hljs-subst">${ahora.getHours()}</span>:<span class="hljs-subst">${ahora.getMinutes()}</span>:<span class="hljs-subst">${ahora.getSeconds()}</span>`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">formatearOperacion</span>(<span class="hljs-params">num1, num2, operacion, resultado</span>) {
+    <span class="hljs-keyword">const</span> simbolos = {
+        <span class="hljs-attr">sumar</span>: <span class="hljs-string">&#x27;+&#x27;</span>,
+        <span class="hljs-attr">restar</span>: <span class="hljs-string">&#x27;-&#x27;</span>,
+        <span class="hljs-attr">multiplicar</span>: <span class="hljs-string">&#x27;×&#x27;</span>,
+        <span class="hljs-attr">dividir</span>: <span class="hljs-string">&#x27;÷&#x27;</span>
+    };
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${num1}</span> <span class="hljs-subst">${simbolos[operacion]}</span> <span class="hljs-subst">${num2}</span> = <span class="hljs-subst">${resultado}</span>`</span>;
+}
+</div></code></pre>
+<h3 id="paso-8-crear-el-módulo-de-almacenamiento">Paso 8: Crear el módulo de almacenamiento</h3>
+<p>Archivo: <code>modules/storage.js</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Módulo de almacenamiento - Responsabilidad: guardar y recuperar datos</span>
+<span class="hljs-comment">// Este módulo puede reutilizarse para cualquier tipo de historial</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STORAGE_KEY</span> = <span class="hljs-string">&#x27;calculadora_historial&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">guardarEnHistorial</span>(<span class="hljs-params">operacion, resultado</span>) {
+    <span class="hljs-keyword">const</span> historial = <span class="hljs-title function_">obtenerHistorial</span>();
+    historial.<span class="hljs-title function_">unshift</span>({
+        <span class="hljs-attr">operacion</span>: operacion,
+        <span class="hljs-attr">resultado</span>: resultado,
+        <span class="hljs-attr">fecha</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toLocaleString</span>()
+    });
+    
+    <span class="hljs-comment">// Mantener solo últimos 10 registros</span>
+    <span class="hljs-keyword">if</span> (historial.<span class="hljs-property">length</span> &gt; <span class="hljs-number">10</span>) {
+        historial.<span class="hljs-title function_">pop</span>();
+    }
+    
+    <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">STORAGE_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(historial));
+    <span class="hljs-keyword">return</span> historial;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">obtenerHistorial</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> historial = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">STORAGE_KEY</span>);
+    <span class="hljs-keyword">if</span> (historial) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(historial);
+    }
+    <span class="hljs-keyword">return</span> [];
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">limpiarHistorial</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">removeItem</span>(<span class="hljs-variable constant_">STORAGE_KEY</span>);
+    <span class="hljs-keyword">return</span> [];
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mostrarHistorialEnUI</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> historialDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;historial&quot;</span>);
+    <span class="hljs-keyword">const</span> historial = <span class="hljs-title function_">obtenerHistorial</span>();
+    
+    <span class="hljs-keyword">if</span> (!historialDiv) <span class="hljs-keyword">return</span>;
+    
+    <span class="hljs-keyword">if</span> (historial.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+        historialDiv.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;&lt;p&gt;No hay operaciones guardadas&lt;/p&gt;&quot;</span>;
+        <span class="hljs-keyword">return</span>;
+    }
+    
+    <span class="hljs-keyword">let</span> html = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; historial.<span class="hljs-property">length</span>; i++) {
+        html += <span class="hljs-string">`&lt;div class=&quot;historial-item&quot;&gt;
+                    &lt;strong&gt;<span class="hljs-subst">${historial[i].operacion}</span>&lt;/strong&gt;&lt;br&gt;
+                    Resultado: <span class="hljs-subst">${historial[i].resultado}</span>&lt;br&gt;
+                    &lt;small&gt;<span class="hljs-subst">${historial[i].fecha}</span>&lt;/small&gt;
+                 &lt;/div&gt;`</span>;
+    }
+    historialDiv.<span class="hljs-property">innerHTML</span> = html;
+}
+</div></code></pre>
+<h3 id="paso-9-crear-el-archivo-principal">Paso 9: Crear el archivo principal</h3>
+<p>Archivo: <code>js/app.js</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// app.js - Punto de entrada de la aplicación</span>
+<span class="hljs-comment">// Importa todos los módulos y los coordina</span>
+
+<span class="hljs-keyword">import</span> { 
+    esNumeroValido, 
+    validarDivision, 
+    limpiarErrores, 
+    mostrarError, 
+    mostrarExito 
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../modules/validaciones.js&#x27;</span>;
+
+<span class="hljs-keyword">import</span> { 
+    sumar, 
+    restar, 
+    multiplicar, 
+    dividir, 
+    areaCirculo,
+    calcularTodo
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../modules/calculos.js&#x27;</span>;
+
+<span class="hljs-keyword">import</span> { 
+    formatearNumero, 
+    formatearOperacion, 
+    formatearFecha 
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../modules/formateo.js&#x27;</span>;
+
+<span class="hljs-keyword">import</span> { 
+    guardarEnHistorial, 
+    mostrarHistorialEnUI, 
+    limpiarHistorial 
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../modules/storage.js&#x27;</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;=== APLICACIÓN MODULAR CARGADA ===&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Módulos importados:&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;- validaciones.js (validación de datos)&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;- calculos.js (operaciones matemáticas)&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;- formateo.js (formato de datos)&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;- storage.js (almacenamiento local)&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Fecha y hora:&quot;</span>, <span class="hljs-title function_">formatearFecha</span>());
+
+<span class="hljs-comment">// Mostrar historial al cargar la página</span>
+<span class="hljs-title function_">mostrarHistorialEnUI</span>();
+
+<span class="hljs-comment">// Función principal de la calculadora</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">calcular</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">limpiarErrores</span>();
+    
+    <span class="hljs-keyword">const</span> num1 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;num1&quot;</span>).<span class="hljs-property">value</span>);
+    <span class="hljs-keyword">const</span> num2 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;num2&quot;</span>).<span class="hljs-property">value</span>);
+    <span class="hljs-keyword">const</span> operacion = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;operacion&quot;</span>).<span class="hljs-property">value</span>;
+    
+    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">esNumeroValido</span>(num1)) {
+        <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: Ingresa un primer número válido&quot;</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+    
+    <span class="hljs-keyword">let</span> resultado;
+    <span class="hljs-keyword">let</span> operacionTexto = <span class="hljs-string">&quot;&quot;</span>;
+    
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">switch</span>(operacion) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;sumar&quot;</span>:
+                <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">esNumeroValido</span>(num2)) {
+                    <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: Ingresa un segundo número válido&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                }
+                resultado = <span class="hljs-title function_">sumar</span>(num1, num2);
+                operacionTexto = <span class="hljs-title function_">formatearOperacion</span>(num1, num2, <span class="hljs-string">&quot;sumar&quot;</span>, <span class="hljs-title function_">formatearNumero</span>(resultado));
+                <span class="hljs-keyword">break</span>;
+                
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;restar&quot;</span>:
+                <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">esNumeroValido</span>(num2)) {
+                    <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: Ingresa un segundo número válido&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                }
+                resultado = <span class="hljs-title function_">restar</span>(num1, num2);
+                operacionTexto = <span class="hljs-title function_">formatearOperacion</span>(num1, num2, <span class="hljs-string">&quot;restar&quot;</span>, <span class="hljs-title function_">formatearNumero</span>(resultado));
+                <span class="hljs-keyword">break</span>;
+                
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;multiplicar&quot;</span>:
+                <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">esNumeroValido</span>(num2)) {
+                    <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: Ingresa un segundo número válido&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                }
+                resultado = <span class="hljs-title function_">multiplicar</span>(num1, num2);
+                operacionTexto = <span class="hljs-title function_">formatearOperacion</span>(num1, num2, <span class="hljs-string">&quot;multiplicar&quot;</span>, <span class="hljs-title function_">formatearNumero</span>(resultado));
+                <span class="hljs-keyword">break</span>;
+                
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;dividir&quot;</span>:
+                <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">esNumeroValido</span>(num2)) {
+                    <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: Ingresa un segundo número válido&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                }
+                <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">validarDivision</span>(num2)) {
+                    <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: No se puede dividir por cero&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                }
+                resultado = <span class="hljs-title function_">dividir</span>(num1, num2);
+                operacionTexto = <span class="hljs-title function_">formatearOperacion</span>(num1, num2, <span class="hljs-string">&quot;dividir&quot;</span>, <span class="hljs-title function_">formatearNumero</span>(resultado));
+                <span class="hljs-keyword">break</span>;
+                
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;area&quot;</span>:
+                resultado = <span class="hljs-title function_">areaCirculo</span>(num1);
+                operacionTexto = <span class="hljs-string">`Área del círculo con radio <span class="hljs-subst">${num1}</span> = <span class="hljs-subst">${formatearNumero(resultado)}</span>`</span>;
+                <span class="hljs-keyword">break</span>;
+                
+            <span class="hljs-attr">default</span>:
+                <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Operación no válida&quot;</span>);
+                <span class="hljs-keyword">return</span>;
+        }
+        
+        <span class="hljs-title function_">mostrarExito</span>(<span class="hljs-string">`Resultado: <span class="hljs-subst">${formatearNumero(resultado)}</span>`</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Operación realizada: <span class="hljs-subst">${operacionTexto}</span> | Hora: <span class="hljs-subst">${formatearFecha()}</span>`</span>);
+        
+        <span class="hljs-title function_">guardarEnHistorial</span>(operacionTexto, <span class="hljs-title function_">formatearNumero</span>(resultado));
+        <span class="hljs-title function_">mostrarHistorialEnUI</span>();
+        
+    } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">`Error: <span class="hljs-subst">${error.message}</span>`</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Error capturado:&quot;</span>, error.<span class="hljs-property">message</span>);
+    }
+};
+
+<span class="hljs-comment">// Función para calcular todo (reutilización)</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">calcularTodo</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">limpiarErrores</span>();
+    
+    <span class="hljs-keyword">const</span> num1 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;num1&quot;</span>).<span class="hljs-property">value</span>);
+    <span class="hljs-keyword">const</span> num2 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;num2&quot;</span>).<span class="hljs-property">value</span>);
+    
+    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">esNumeroValido</span>(num1) || !<span class="hljs-title function_">esNumeroValido</span>(num2)) {
+        <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">&quot;Error: Ingresa dos números válidos&quot;</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+    
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> resultados = <span class="hljs-title function_">calcularTodo</span>(num1, num2);
+        
+        <span class="hljs-keyword">let</span> mensaje = <span class="hljs-string">`Resultados para <span class="hljs-subst">${num1}</span> y <span class="hljs-subst">${num2}</span>:&lt;br&gt;`</span>;
+        mensaje += <span class="hljs-string">`Suma: <span class="hljs-subst">${formatearNumero(resultados.suma)}</span>&lt;br&gt;`</span>;
+        mensaje += <span class="hljs-string">`Resta: <span class="hljs-subst">${formatearNumero(resultados.resta)}</span>&lt;br&gt;`</span>;
+        mensaje += <span class="hljs-string">`Multiplicación: <span class="hljs-subst">${formatearNumero(resultados.multiplicacion)}</span>&lt;br&gt;`</span>;
+        mensaje += <span class="hljs-string">`División: <span class="hljs-subst">${formatearNumero(resultados.division)}</span>`</span>;
+        
+        <span class="hljs-title function_">mostrarExito</span>(mensaje);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Calcular todo ejecutado:&quot;</span>, resultados);
+        
+        <span class="hljs-title function_">guardarEnHistorial</span>(<span class="hljs-string">`Todas las operaciones con <span class="hljs-subst">${num1}</span> y <span class="hljs-subst">${num2}</span>`</span>, mensaje);
+        <span class="hljs-title function_">mostrarHistorialEnUI</span>();
+        
+    } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-title function_">mostrarError</span>(<span class="hljs-string">`Error: <span class="hljs-subst">${error.message}</span>`</span>);
+    }
+};
+
+<span class="hljs-comment">// Función para limpiar historial</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">limpiarHistorial</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">limpiarHistorial</span>();
+    <span class="hljs-title function_">mostrarHistorialEnUI</span>();
+    <span class="hljs-title function_">mostrarExito</span>(<span class="hljs-string">&quot;Historial limpiado correctamente&quot;</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Historial limpiado&quot;</span>);
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Calculadora modular lista. Usa las funciones de los 4 módulos.&quot;</span>);
+</div></code></pre>
+<h3 id="paso-10-crear-el-archivo-html">Paso 10: Crear el archivo HTML</h3>
+<p>Archivo: <code>index.html</code></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;es&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Calculadora Modular - Semana 11<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;css/estilos.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Calculadora Modular<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Aplicación con <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>modularización y reutilización<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> de código<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;num1&quot;</span>&gt;</span>Primer número:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;num1&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Ej: 10&quot;</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;num2&quot;</span>&gt;</span>Segundo número:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;num2&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Ej: 5&quot;</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;operacion&quot;</span>&gt;</span>Operación:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;operacion&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;sumar&quot;</span>&gt;</span>Sumar (+)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;restar&quot;</span>&gt;</span>Restar (-)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;multiplicar&quot;</span>&gt;</span>Multiplicar (×)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;dividir&quot;</span>&gt;</span>Dividir (÷)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;area&quot;</span>&gt;</span>Área del círculo (πr²)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;calcular()&quot;</span>&gt;</span>Calcular<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;calcularTodo()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color: #28a745;&quot;</span>&gt;</span>Calcular Todo<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;limpiarHistorial()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color: #dc3545;&quot;</span>&gt;</span>Limpiar Historial<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;resultado&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;resultado&quot;</span>&gt;</span>
+        Esperando operación...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Historial de operaciones<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;historial&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;historial&quot;</span>&gt;</span>
+        Cargando historial...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Módulos creados:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>validaciones.js<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> - Validación de datos<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>calculos.js<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> - Operaciones matemáticas<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>formateo.js<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> - Formato de números y fechas<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>storage.js<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> - Almacenamiento local (historial)<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>app.js<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> - Punto de entrada que integra todo<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Consola (F12):<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> Verás los mensajes de carga de módulos<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h1 id="3-cómo-ejecutar">3. CÓMO EJECUTAR</h1>
+<h3 id="abre-la-carpeta-semana11_tu_nombre-en-vs-code">Abre la carpeta semana11_tu_nombre en VS Code</h3>
+<ul>
+<li>Haz clic derecho en <code>index.html</code></li>
+<li>Selecciona &quot;Open with Live Server&quot;</li>
+<li>Abre la consola (F12) para ver los mensajes</li>
+</ul>
+
+</body>
+</html>
