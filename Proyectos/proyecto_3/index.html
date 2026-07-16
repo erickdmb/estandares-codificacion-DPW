@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor de unidades: longitud, peso, temperatura y más">
+    <title>Conversor de Unidades | Convierte cualquier unidad</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">Conversor de Unidades</h1>
+            <p class="header__subtitle">Convierte entre diferentes unidades de forma rápida</p>
+        </div>
+    </header>
+
+    <nav class="nav" aria-label="Navegación por categorías">
+        <ul class="nav__list">
+            <li class="nav__item"><button class="nav__link nav__link--active" data-categoria="longitud">Longitud</button></li>
+            <li class="nav__item"><button class="nav__link" data-categoria="peso">Peso</button></li>
+            <li class="nav__item"><button class="nav__link" data-categoria="temperatura">Temperatura</button></li>
+            <li class="nav__item"><button class="nav__link" data-categoria="volumen">Volumen</button></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <section class="section">
+            <h2 class="section__title" id="tituloCategoria">Conversor de Longitud</h2>
+            
+            <div class="converter">
+                <div class="converter__input-group">
+                    <label for="valorEntrada" class="converter__label">Valor</label>
+                    <input type="number" id="valorEntrada" class="converter__input" placeholder="Ingresa un valor" step="any">
+                    <select id="unidadOrigen" class="converter__select"></select>
+                </div>
+
+                <button type="button" id="btnInvertir" class="converter__swap" title="Invertir unidades">Invertir</button>
+
+                <div class="converter__input-group">
+                    <label for="valorSalida" class="converter__label">Resultado</label>
+                    <input type="text" id="valorSalida" class="converter__input converter__input--result" readonly placeholder="0">
+                    <select id="unidadDestino" class="converter__select"></select>
+                </div>
+            </div>
+
+            <div id="infoConversion" class="info-panel"></div>
+        </section>
+
+        <section class="section">
+            <h2 class="section__title">Tabla de Referencia Rápida</h2>
+            <div id="tablaReferencia" class="reference-table"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">Conversor de Unidades © 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/validaciones.js"></script>
+    <script src="js/pruebas.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

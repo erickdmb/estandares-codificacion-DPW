@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestor de tareas con prioridades y fechas">
+    <title>Lista de Tareas | Organiza tu día</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">Lista de Tareas</h1>
+            <p class="header__subtitle">Organiza tu día de forma eficiente</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section section--form">
+            <h2 class="section__title" id="formTitle">Nueva Tarea</h2>
+            <form id="tareaForm" class="form" novalidate>
+                <div class="form__group form__group--full">
+                    <label for="tituloTarea" class="form__label">Título de la tarea</label>
+                    <input type="text" id="tituloTarea" name="tituloTarea" class="form__input" 
+                           placeholder="¿Qué necesitas hacer?" required>
+                    <span class="form__error" id="errorTitulo"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="descripcionTarea" class="form__label">Descripción (opcional)</label>
+                    <textarea id="descripcionTarea" name="descripcionTarea" class="form__input form__textarea" 
+                              placeholder="Agrega más detalles..." rows="3"></textarea>
+                </div>
+
+                <div class="form__group">
+                    <label for="prioridadTarea" class="form__label">Prioridad</label>
+                    <select id="prioridadTarea" name="prioridadTarea" class="form__input form__select" required>
+                        <option value="baja">Baja</option>
+                        <option value="media" selected>Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </div>
+
+                <div class="form__group">
+                    <label for="fechaLimite" class="form__label">Fecha límite (opcional)</label>
+                    <input type="date" id="fechaLimite" name="fechaLimite" class="form__input">
+                </div>
+
+                <div class="form__group">
+                    <label for="categoriaTarea" class="form__label">Categoría</label>
+                    <select id="categoriaTarea" name="categoriaTarea" class="form__input form__select">
+                        <option value="general">General</option>
+                        <option value="trabajo">Trabajo</option>
+                        <option value="personal">Personal</option>
+                        <option value="estudio">Estudio</option>
+                        <option value="compras">Compras</option>
+                    </select>
+                </div>
+
+                <div class="form__buttons">
+                    <button type="submit" class="btn btn--primary" id="btnSubmit">Agregar Tarea</button>
+                    <button type="button" class="btn btn--secondary btn--hidden" id="btnCancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="section section--stats">
+            <div class="stats">
+                <div class="stats__item">
+                    <span class="stats__number" id="totalTareas">0</span>
+                    <span class="stats__label">Total</span>
+                </div>
+                <div class="stats__item stats__item--completed">
+                    <span class="stats__number" id="tareasCompletadas">0</span>
+                    <span class="stats__label">Completadas</span>
+                </div>
+                <div class="stats__item stats__item--pending">
+                    <span class="stats__number" id="tareasPendientes">0</span>
+                    <span class="stats__label">Pendientes</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--filters">
+            <div class="filters">
+                <div class="filters__group">
+                    <label for="filtroEstado" class="form__label">Estado:</label>
+                    <select id="filtroEstado" class="form__input form__select">
+                        <option value="todas">Todas</option>
+                        <option value="pendientes">Pendientes</option>
+                        <option value="completadas">Completadas</option>
+                    </select>
+                </div>
+                <div class="filters__group">
+                    <label for="filtroPrioridad" class="form__label">Prioridad:</label>
+                    <select id="filtroPrioridad" class="form__input form__select">
+                        <option value="todas">Todas</option>
+                        <option value="alta">Alta</option>
+                        <option value="media">Media</option>
+                        <option value="baja">Baja</option>
+                    </select>
+                </div>
+                <div class="filters__group">
+                    <label for="ordenarPor" class="form__label">Ordenar por:</label>
+                    <select id="ordenarPor" class="form__input form__select">
+                        <option value="fecha">Fecha de creacion</option>
+                        <option value="prioridad">Prioridad</option>
+                        <option value="fechaLimite">Fecha limite</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filters__actions">
+                <button type="button" class="btn btn--secondary btn--small" id="btnLimpiarCompletadas">Limpiar completadas</button>
+                <button type="button" class="btn btn--danger btn--small" id="btnLimpiarTodas">Eliminar todas</button>
+            </div>
+        </section>
+
+        <section class="section section--list">
+            <h2 class="section__title">Tareas</h2>
+            <div id="listaTareas" class="task-list">
+                <p class="task-list__empty">No hay tareas. ¡Agrega una!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">Lista de Tareas © 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/validaciones.js"></script>
+    <script src="js/pruebas.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de IMC - Índice de Masa Corporal">
+    <title>Calculadora de IMC | Controla tu peso saludable</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">Calculadora de IMC</h1>
+            <p class="header__subtitle">Calcula tu índice de masa corporal de forma rápida</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section section--form">
+            <h2 class="section__title">Datos Personales</h2>
+            <form id="imcForm" class="form" novalidate>
+                <div class="form__group">
+                    <label for="peso" class="form__label">Peso (kg)</label>
+                    <input type="number" id="peso" name="peso" class="form__input" 
+                           placeholder="Ej: 70" min="20" max="300" step="0.1" required>
+                    <span class="form__error" id="errorPeso"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="altura" class="form__label">Altura (cm)</label>
+                    <input type="number" id="altura" name="altura" class="form__input" 
+                           placeholder="Ej: 175" min="50" max="250" required>
+                    <span class="form__error" id="errorAltura"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="edad" class="form__label">Edad (años)</label>
+                    <input type="number" id="edad" name="edad" class="form__input" 
+                           placeholder="Ej: 30" min="1" max="120" required>
+                    <span class="form__error" id="errorEdad"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="sexo" class="form__label">Sexo</label>
+                    <select id="sexo" name="sexo" class="form__input form__select" required>
+                        <option value="">Selecciona</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                    </select>
+                    <span class="form__error" id="errorSexo"></span>
+                </div>
+
+                <div class="form__buttons">
+                    <button type="submit" class="btn btn--primary">Calcular IMC</button>
+                    <button type="reset" class="btn btn--secondary">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="section section--result" id="resultadoSeccion">
+            <h2 class="section__title">Resultado</h2>
+            <div id="resultadoContainer" class="result">
+                <p class="result__empty">Ingresa tus datos para ver el resultado</p>
+            </div>
+        </section>
+
+        <section class="section section--info">
+            <h2 class="section__title">¿Qué es el IMC?</h2>
+            <p class="info-text">
+                El <strong>Índice de Masa Corporal (IMC)</strong> es una medida que relaciona tu peso 
+                con tu altura. Es un indicador útil para clasificar el estado nutricional de adultos 
+                según las categorías establecidas por la Organización Mundial de la Salud (OMS).
+            </p>
+            
+            <div class="table-container">
+                <table class="imc-table">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>IMC (kg/m²)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="imc-row imc-row--bajo">
+                            <td>Bajo peso</td>
+                            <td>&lt; 18.5</td>
+                        </tr>
+                        <tr class="imc-row imc-row--normal">
+                            <td>Peso normal</td>
+                            <td>18.5 - 24.9</td>
+                        </tr>
+                        <tr class="imc-row imc-row--sobrepeso">
+                            <td>Sobrepeso</td>
+                            <td>25 - 29.9</td>
+                        </tr>
+                        <tr class="imc-row imc-row--obeso1">
+                            <td>Obesidad grado I</td>
+                            <td>30 - 34.9</td>
+                        </tr>
+                        <tr class="imc-row imc-row--obeso2">
+                            <td>Obesidad grado II</td>
+                            <td>35 - 39.9</td>
+                        </tr>
+                        <tr class="imc-row imc-row--obeso3">
+                            <td>Obesidad grado III</td>
+                            <td>≥ 40</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="info-disclaimer">
+                <strong>Importante:</strong> El IMC es un indicador general y no distingue entre 
+                masa muscular y grasa corporal. Consulta a un profesional de la salud para una 
+                evaluacion completa.
+            </p>
+        </section>
+
+        <section class="section section--history">
+            <h2 class="section__title">Historial</h2>
+            <div id="historialContainer" class="history">
+                <p class="history__empty">No hay registros guardados</p>
+            </div>
+            <button type="button" id="btnLimpiarHistorial" class="btn btn--danger btn--hidden">Limpiar Historial</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">Calculadora de IMC © 2026</p>
+            <p class="footer__disclaimer">Esta herramienta es informativa. Consulta a un profesional de la salud.</p>
+        </div>
+    </footer>
+
+    <script src="js/validaciones.js"></script>
+    <script src="js/pruebas.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de ahorro para planificar tus metas financieras">
+    <title>Calculadora de Ahorro | Alcanza tus Metas Financieras</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Encabezado principal del sitio -->
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">Calculadora de Ahorro</h1>
+            <p class="header__subtitle">Planifica tu futuro financiero paso a paso</p>
+        </div>
+    </header>
+
+    <!-- Navegación principal -->
+    <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="#calculadora" class="nav__link nav__link--active">Calculadora</a></li>
+            <li class="nav__item"><a href="#historial" class="nav__link">Historial</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la aplicación -->
+    <main class="main">
+        <!-- Sección de entrada de datos -->
+        <section id="calculadora" class="section section--calculator">
+            <h2 class="section__title">Calculadora de Ahorro Mensual</h2>
+            
+            <!-- Formulario principal -->
+            <form id="ahorroForm" class="form" novalidate>
+                <!-- Grupo: Ahorro actual -->
+                <div class="form__group">
+                    <label for="ahorroActual" class="form__label">Ahorro Actual (S/)</label>
+                    <input 
+                        type="number" 
+                        id="ahorroActual" 
+                        name="ahorroActual"
+                        class="form__input" 
+                        placeholder="Ej: 1000"
+                        min="0" 
+                        step="0.01"
+                        aria-describedby="ahorroActualHelp"
+                        required
+                    >
+                    <span id="ahorroActualHelp" class="form__help">Cantidad que ya tienes ahorrada</span>
+                    <span class="form__error" id="errorAhorroActual"></span>
+                </div>
+
+                <!-- Grupo: Ingreso mensual -->
+                <div class="form__group">
+                    <label for="ingresoMensual" class="form__label">Ingreso Mensual (S/)</label>
+                    <input 
+                        type="number" 
+                        id="ingresoMensual" 
+                        name="ingresoMensual"
+                        class="form__input" 
+                        placeholder="Ej: 3000"
+                        min="0" 
+                        step="0.01"
+                        aria-describedby="ingresoMensualHelp"
+                        required
+                    >
+                    <span id="ingresoMensualHelp" class="form__help">Tu salario o ingreso neto mensual</span>
+                    <span class="form__error" id="errorIngresoMensual"></span>
+                </div>
+
+                <!-- Grupo: Gastos mensuales -->
+                <div class="form__group">
+                    <label for="gastosMensuales" class="form__label">Gastos Mensuales (S/)</label>
+                    <input 
+                        type="number" 
+                        id="gastosMensuales" 
+                        name="gastosMensuales"
+                        class="form__input" 
+                        placeholder="Ej: 1500"
+                        min="0" 
+                        step="0.01"
+                        aria-describedby="gastosMensualesHelp"
+                        required
+                    >
+                    <span id="gastosMensualesHelp" class="form__help">Total de gastos fijos y variables</span>
+                    <span class="form__error" id="errorGastosMensuales"></span>
+                </div>
+
+                <!-- Grupo: Meta de ahorro -->
+                <div class="form__group">
+                    <label for="metaAhorro" class="form__label">Meta de Ahorro (S/)</label>
+                    <input 
+                        type="number" 
+                        id="metaAhorro" 
+                        name="metaAhorro"
+                        class="form__input" 
+                        placeholder="Ej: 10000"
+                        min="0" 
+                        step="0.01"
+                        aria-describedby="metaAhorroHelp"
+                        required
+                    >
+                    <span id="metaAhorroHelp" class="form__help">Cantidad que quieres ahorrar</span>
+                    <span class="form__error" id="errorMetaAhorro"></span>
+                </div>
+
+                <!-- Botones de accion -->
+                <div class="form__buttons">
+                    <button type="submit" class="btn btn--primary">Calcular</button>
+                    <button type="reset" class="btn btn--secondary">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Sección de resultados -->
+        <section id="resultados" class="section section--results">
+            <h2 class="section__title">Resultados</h2>
+            <div id="resultadosContainer" class="results">
+                <p class="results__empty">Ingresa tus datos para ver los resultados</p>
+            </div>
+        </section>
+
+        <!-- Seccion de historial -->
+        <section id="historial" class="section section--history">
+            <h2 class="section__title">Historial de Cálculos</h2>
+            <div id="historialContainer" class="history">
+                <p class="history__empty">No hay cálculos guardados</p>
+            </div>
+            <button type="button" id="btnLimpiarHistorial" class="btn btn--danger btn--hidden">Limpiar Historial</button>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">Calculadora de Ahorro © 2026</p>
+            <p class="footer__disclaimer">Esta herramienta es solo para fines educativos. Consulta a un asesor financiero profesional.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts de la aplicación -->
+    <script src="js/validaciones.js"></script>
+    <script src="js/pruebas.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

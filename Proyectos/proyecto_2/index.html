@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestor de gastos personales para registrar y categorizar tus finanzas">
+    <title>Gestor de Gastos | Controla tus Finanzas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">Gestor de Gastos</h1>
+            <p class="header__subtitle">Controla tus finanzas de forma inteligente</p>
+        </div>
+    </header>
+
+    <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="#agregar" class="nav__link nav__link--active">Agregar Gasto</a></li>
+            <li class="nav__item"><a href="#resumen" class="nav__link">Resumen</a></li>
+            <li class="nav__item"><a href="#lista" class="nav__link">Lista</a></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <section id="agregar" class="section">
+            <h2 class="section__title">Agregar Nuevo Gasto</h2>
+            <form id="gastoForm" class="form" novalidate>
+                <div class="form__group">
+                    <label for="descripcionGasto" class="form__label">Descripción</label>
+                    <input type="text" id="descripcionGasto" name="descripcionGasto" class="form__input" 
+                           placeholder="Ej: Compra de supermercado" required>
+                    <span class="form__error" id="errorDescripcion"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="montoGasto" class="form__label">Monto (S/)</label>
+                    <input type="number" id="montoGasto" name="montoGasto" class="form__input" 
+                           placeholder="Ej: 150.00" min="0.01" step="0.01" required>
+                    <span class="form__error" id="errorMonto"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="categoriaGasto" class="form__label">Categoría</label>
+                    <select id="categoriaGasto" name="categoriaGasto" class="form__input form__select" required>
+                        <option value="">Selecciona una categoría</option>
+                        <option value="alimentacion">Alimentacion</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="entretenimiento">Entretenimiento</option>
+                        <option value="salud">Salud</option>
+                        <option value="educacion">Educacion</option>
+                        <option value="servicios">Servicios</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                    <span class="form__error" id="errorCategoria"></span>
+                </div>
+
+                <div class="form__group">
+                    <label for="fechaGasto" class="form__label">Fecha</label>
+                    <input type="date" id="fechaGasto" name="fechaGasto" class="form__input" required>
+                    <span class="form__error" id="errorFecha"></span>
+                </div>
+
+                <div class="form__buttons">
+                    <button type="submit" class="btn btn--primary">Agregar Gasto</button>
+                    <button type="reset" class="btn btn--secondary">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="resumen" class="section">
+            <h2 class="section__title">Resumen Financiero</h2>
+            <div id="resumenContainer" class="summary">
+                <div class="summary__card summary__card--total">
+                    <p class="summary__label">Total de Gastos</p>
+                    <p class="summary__value" id="totalGastos">S/ 0.00</p>
+                </div>
+                <div class="summary__categories" id="resumenCategorias"></div>
+            </div>
+        </section>
+
+        <section id="lista" class="section">
+            <h2 class="section__title">Lista de Gastos</h2>
+            <div class="filters">
+                <label for="filtroCategoria" class="form__label">Filtrar por categoría:</label>
+                <select id="filtroCategoria" class="form__input form__select">
+                    <option value="">Todas</option>
+                    <option value="alimentacion">Alimentacion</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="entretenimiento">Entretenimiento</option>
+                    <option value="salud">Salud</option>
+                    <option value="educacion">Educacion</option>
+                    <option value="servicios">Servicios</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+            <div id="listaGastos" class="expense-list">
+                <p class="expense-list__empty">No hay gastos registrados</p>
+            </div>
+            <button type="button" id="btnLimpiarGastos" class="btn btn--danger btn--hidden">Eliminar Todos</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">Gestor de Gastos © 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/validaciones.js"></script>
+    <script src="js/pruebas.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
